@@ -53,7 +53,16 @@ class Contenedor{
         }
     }
 
-    getByID(id) {}
+    getByID(id) {
+        try {
+            fs.promises.readFile(this.archivo, JSON.parse(this.data))
+            this.data.find(elemento => elemento == id)
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+
 
     async getAll() {
         try {
@@ -71,9 +80,19 @@ class Contenedor{
         }
     }
 
-    deleteById(id) {}
+    deleteById(id) {
+        try {
+            fs.promises.readFile(this.archivo, JSON.parse(this.data))
+            this.data.find(elemento => elemento == id)
+        } catch (error) {
+            console.log(error)
+        }
 
-    deleteAll() {}
+    }
+
+    deleteAll() {
+        fs.promises.file(this.archivo)
+    }
 
 }
 
@@ -86,3 +105,7 @@ async function newFunction() {
 }
 
 newFunction()
+
+lista.getByID(1)
+
+lista.deleteAll()
